@@ -5,7 +5,11 @@
 body {
     background-color: #f9fafb;
 }
-.app {
+.app{
+    display: flex;
+}
+.container {
+    flex-grow: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,6 +31,15 @@ body {
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 5%);
     padding: 26px 34px;
     margin-bottom: 34px;
+    transition: scale 0.4s;
+    cursor: pointer;
+}
+.card:hover {
+    scale: 1.1;
+}
+.card:hover .card-desc {
+    max-height: 10em;
+    -webkit-line-clamp: unset;
 }
 
 .card-title {
@@ -45,6 +58,8 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    transition: max-height 0.4s;
+    max-height: 41px;
 }
 .card-tag-wrapper {
     display: flex;
@@ -75,28 +90,98 @@ body {
 
 .add-button {
     margin-bottom: 49px;
+    cursor: pointer;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.add-content {
+    width: 370px;
+    padding: 41px 42px 40px 43px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 5%);
+    position: relative;
+}
+.add-content-confirm {
+    position: absolute;
+    bottom: -58px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+}
+.add-content-confirm-cancel {
+    position: relative;
+    top: 1px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+.add-content-confirm-ok {
+    cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.input {
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid #f3f4f6;
+    margin-bottom: 14px;
 }
 
-.App-link {
-    color: #61dafb;
+.title-input {
+    flex-grow: 1;
+    padding: 14px;
+    font-size: 12px;
+    color: #374151;
+    border: none;
+}
+.desc-input {
+    flex-grow: 1;
+    padding: 14px;
+    font-size: 12px;
+    color: #374151;
+    border: none;
+    height: 70px;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.select-tags-list {
+    display: flex;
+}
+
+.select-tag {
+    border-radius: 4px;
+    border: 1px solid #9ca3af;
+    color: #9ca3af;
+    line-height: 33.5px;
+    margin-right: 18px;
+    padding: 0 13.75px;
+    cursor: pointer;
+}
+.select-tag.active {
+    background-color: #f2f2f2;
+}
+
+.left{
+    min-width: 165px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.right{
+    min-width: 153px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    
+}
+.delete {
+    position: fixed;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.complete {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
 }
